@@ -14,7 +14,7 @@ on:
       - published
 
 env:
-  SENTINEL_DASHBOARD_VERSION: 1.6.0
+  SENTINEL_DASHBOARD_VERSION: 1.6.1
   RUN_JAVA_SH_VERSION: v1.3.8
 
 jobs:
