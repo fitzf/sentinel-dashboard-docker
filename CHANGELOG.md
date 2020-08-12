@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.7.1] - 2020-08-12
+### Changed
+- Bump `sentinel-dashboard.jar` from 1.7.0 to [1.7.1](https://github.com/alibaba/Sentinel/releases/download/1.7.1/sentinel-dashboard-1.7.1.jar).
+
 ## [1.7.0] - 2020-08-12
 ### Changed
 - Bump `sentinel-dashboard.jar` from 1.6.3 to [1.7.0](https://github.com/alibaba/Sentinel/releases/download/1.7.0/sentinel-dashboard-1.7.0.jar).
