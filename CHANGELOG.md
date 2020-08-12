@@ -6,8 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.6.0] - 2020-08-10
+## [1.6.0] - 2020-08-12
 ### Added
+- Set the base image to `adoptopenjdk/openjdk8:jre8u262-b10-alpine`.
 - [sentinel-dashboard-1.6.0.jar](https://github.com/alibaba/Sentinel/releases/download/1.6.0/sentinel-dashboard-1.6.0.jar)
 - Startup script [run-java.sh v1.3.8](https://github.com/fabric8io-images/run-java-sh/blob/v1.3.8/fish-pepper/run-java-sh/fp-files/run-java.sh).
-- Automatically execute docker build action [GitHub Actions](https://docs.github.com/en/actions).
