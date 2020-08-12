@@ -2,7 +2,7 @@
 
 # Sentinel Dashboard Docker
 
-![Publish Docker image](https://github.com/zhangfei9734/docker-sentinel-dashboard/workflows/Publish%20Docker%20image/badge.svg)
+![Publish Docker image](https://github.com/zhangfei9734/sentinel-dashboard/workflows/Publish%20Docker%20image/badge.svg)
 ![Docker Image Version (latest semver)](https://img.shields.io/docker/v/zhangfei9734/sentinel-dashboard)
 ![Docker Pulls](https://img.shields.io/docker/pulls/zhangfei9734/sentinel-dashboard)
 ![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/zhangfei9734/sentinel-dashboard)
