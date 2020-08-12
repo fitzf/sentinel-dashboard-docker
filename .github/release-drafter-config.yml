@@ -1,0 +1,24 @@
+# Configuration for Release Drafter - https://github.com/toolmantim/release-drafter
+
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
+template: |
+  # What's Changed
+
+  $CHANGES
+categories:
+  - title: 'Breaking'
+    label: 'type: breaking'
+  - title: 'Features / Enhancements'
+    labels:
+      - 'type: feature'
+      - 'type: enhancement'
+  - title: 'Bug Fixes'
+    label: 'type: bug'
+  - title: 'Documentation'
+    label: 'type: documentation'
+  - title: 'Dependency Updates'
+    label: 'type: dependencies'
+
+exclude-labels:
+  - 'Skip Changelog'
