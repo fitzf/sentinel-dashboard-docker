@@ -29,4 +29,4 @@ LABEL vendor=Zhangfei\ Incorporated \
 
 ADD https://raw.githubusercontent.com/fabric8io-images/run-java-sh/${run_java_sh_version}/fish-pepper/run-java-sh/fp-files/run-java.sh /deployments/run-java.sh
 RUN chmod +x /deployments/run-java.sh
-ADD https://github.com/alibaba/Sentinel/releases/download/${build_version}/sentinel-dashboard-${build_version}.jar /deployments/${app_name}/${app_name}.jar
+ADD https://github.com/alibaba/Sentinel/releases/download/v${build_version}/sentinel-dashboard-${build_version}.jar /deployments/${app_name}/${app_name}.jar
