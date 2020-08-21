@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk8:jre8u262-b10-alpine
+FROM adoptopenjdk/openjdk8:jre8u265-b01-alpine
 
 LABEL maintainer="Zhangfei <zhangfei.eason@gmail.com>"
 
