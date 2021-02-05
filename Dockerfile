@@ -1,10 +1,9 @@
-FROM adoptopenjdk/openjdk8:jre8u282-b08-alpine
+FROM adoptopenjdk/openjdk8:jre8u275-b01-centos
 
 LABEL maintainer="Zhangfei <zhangfei.eason@gmail.com>"
 
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories \
-    && apk add --no-cache --update tzdata bash curl \
-    && rm -rf /var/cache/apk/*
+RUN yum install -y tzdata bash curl \
+    && yum update -y; yum clean all
 
 ARG app_name="sentinel-dashboard"
 ARG build_version="1.8.1"
@@ -29,4 +28,4 @@ LABEL vendor=Zhangfei\ Incorporated \
 
 ADD https://raw.githubusercontent.com/fabric8io-images/run-java-sh/${run_java_sh_version}/fish-pepper/run-java-sh/fp-files/run-java.sh /deployments/run-java.sh
 RUN chmod +x /deployments/run-java.sh
-ADD https://github.com/alibaba/Sentinel/releases/download/v${build_version}/sentinel-dashboard-${build_version}.jar /deployments/${app_name}/${app_name}.jar
+ADD https://github.com/alibaba/Sentinel/releases/download/${build_version}/sentinel-dashboard-${build_version}.jar /deployments/${app_name}/${app_name}.jar
