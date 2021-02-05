@@ -38,9 +38,9 @@ jobs:
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && IMAGE_TAGS="latest,$(echo $IMAGE_TAGS | sed -e 's/^v//')"
 
           # Set the `IMAGE_TAGS` environment variable
-          echo ::set-env name=IMAGE_TAGS::$(echo $IMAGE_TAGS)
+          echo "IMAGE_TAGS=$IMAGE_TAGS" >> $GITHUB_ENV
 
-          echo $IMAGE_TAGS
+          echo "${{ env.IMAGE_TAGS }}"
 
       - name: Build and push Docker image to Docker Hub
         uses: docker/build-push-action@v1
