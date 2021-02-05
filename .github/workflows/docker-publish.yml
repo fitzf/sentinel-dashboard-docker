@@ -38,7 +38,7 @@ jobs:
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && IMAGE_TAGS="latest,$(echo $IMAGE_TAGS | sed -e 's/^v//')"
 
           # Set the `IMAGE_TAGS` environment variable
-          echo "IMAGE_TAGS={$IMAGE_TAGS}" >> $GITHUB_ENV
+          echo "IMAGE_TAGS=$IMAGE_TAGS" >> $GITHUB_ENV
 
           echo "${{ env.IMAGE_TAGS }}"
 
