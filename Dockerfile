@@ -1,10 +1,10 @@
-FROM adoptopenjdk/openjdk8:jre8u265-b01-alpine
+FROM adoptopenjdk/openjdk8:jre8u282-b08-alpine
 
 LABEL maintainer="Zhangfei <zhangfei.eason@gmail.com>"
 
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories && \
-    apk add --no-cache --update tzdata bash curl && \
-    rm -rf /var/cache/apk/*
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories \
+    && apk add --no-cache --update tzdata bash curl \
+    && rm -rf /var/cache/apk/*
 
 ARG app_name="sentinel-dashboard"
 ARG build_version="1.6.0"
@@ -23,9 +23,9 @@ CMD /deployments/run-java.sh
 
 # Set multiple labels at once, using line-continuation characters to break long lines
 LABEL vendor=Zhangfei\ Incorporated \
-      com.zhangfei.is-beta= \
-      com.zhangfei.is-production="" \
-      com.zhangfei.version=${build_version}
+    com.zhangfei.is-beta= \
+    com.zhangfei.is-production="" \
+    com.zhangfei.version=${build_version}
 
 ADD https://raw.githubusercontent.com/fabric8io-images/run-java-sh/${run_java_sh_version}/fish-pepper/run-java-sh/fp-files/run-java.sh /deployments/run-java.sh
 RUN chmod +x /deployments/run-java.sh
