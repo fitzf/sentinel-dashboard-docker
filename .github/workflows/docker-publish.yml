@@ -25,30 +25,43 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
+      
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Generate image tags
         run: |
-          # Strip git ref prefix from version
-          IMAGE_TAGS=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-
+          DOCKERHUB_REPOSITORY=zhangfei9734/sentinel-dashboard
           # Use Docker `latest` tag convention
-          [ "$IMAGE_TAGS" == "master" ] && IMAGE_TAGS=latest
+          IMAGE_TAGS=latest
 
           # Strip "v" prefix from tag name
-          [[ "${{ github.ref }}" == "refs/tags/"* ]] && IMAGE_TAGS="latest,$(echo $IMAGE_TAGS | sed -e 's/^v//')"
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && IMAGE_TAGS="$DOCKERHUB_REPOSITORY:latest,$DOCKERHUB_REPOSITORY:${GITHUB_REF#refs/*/}"
 
           # Set the `IMAGE_TAGS` environment variable
           echo "IMAGE_TAGS=$IMAGE_TAGS" >> $GITHUB_ENV
 
           echo "${{ env.IMAGE_TAGS }}"
 
-      - name: Build and push Docker image to Docker Hub
-        uses: docker/build-push-action@v1
+      - name: Build and push
+        uses: docker/build-push-action@v2
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          build_args: build_version=${{ env.SENTINEL_DASHBOARD_VERSION }},run_java_sh_version=${{ env.RUN_JAVA_SH_VERSION }}
-          repository: zhangfei9734/sentinel-dashboard
+          build-args: |
+            build_version=${{ env.SENTINEL_DASHBOARD_VERSION }}
+            run_java_sh_version=${{ env.RUN_JAVA_SH_VERSION }}
+          labels: |
+            org.opencontainers.image.authors=${{ github.repository_owner }}
+            org.opencontainers.image.source=${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY }}
+            org.opencontainers.image.revision=${{ github.sha }}
           tags: ${{ env.IMAGE_TAGS }}
-          add_git_labels: true
+          platforms: linux/amd64,linux/arm64,linux/ppc64le
           push: ${{ startsWith(github.ref, 'refs/tags/') || endsWith(github.ref, 'master') }}
