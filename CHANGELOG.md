@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.8.1] - 2021-02-05
+### Changed
+- Bump `sentinel-dashboard.jar` from 1.7.0 to [1.8.1](https://github.com/alibaba/Sentinel/releases/download/v1.8.1/sentinel-dashboard-1.8.1.jar).
+- Bump base image `adoptopenjdk/openjdk8` from `jre8u265-b01-alpine` to `jre8u282-b08-alpine`
 ## [1.8.0] - 2020-08-21
 ### Changed
 - Bump `sentinel-dashboard.jar` from 1.7.2 to [1.8.0](https://github.com/alibaba/Sentinel/releases/download/v1.8.0/sentinel-dashboard-1.8.0.jar).

@@ -7,7 +7,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories 
     && rm -rf /var/cache/apk/*
 
 ARG app_name="sentinel-dashboard"
-ARG build_version="1.6.0"
+ARG build_version="1.8.1"
 ARG run_java_sh_version="v1.3.8"
 
 ENV TZ="Asia/Shanghai" \
